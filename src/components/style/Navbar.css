@@ -1,0 +1,22 @@
+nav {
+    text-align: end;
+    display: flex;
+    justify-content: end;
+    background: none;
+}
+
+a {
+    font-size: 25px;
+    padding: 1%;
+    color: white;
+    background: none;
+}
+
+a:hover {
+    color: black;
+    background-color: white;
+}
+
+.hidden {
+    display: none;
+}

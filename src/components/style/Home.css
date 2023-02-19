@@ -1,0 +1,35 @@
+.home-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 87vh;
+}
+
+.baby-h1 {
+    font-family: 'Great Vibes';
+    font-size: 15vh;
+    margin-top: 3%;
+}
+
+.home-title {
+    text-align: center;
+    width: 100vw;
+}
+
+.home-images-container {
+    /* display: flex; */
+    text-align: center;
+    width: 100vw;
+}
+
+.home-images {
+    height: 50vh;
+    margin: 1%;
+    border-radius: 20px;
+}
+
+.home-registries {
+    text-align: center;
+    width: 100vw;
+    font-size: 4vh;
+}
