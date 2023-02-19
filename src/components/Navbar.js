@@ -13,6 +13,7 @@ export default function Navbar () {
         <>
             <nav>
                 <a onClick={()=> navigate('/')}>Home</a>
+                <a onClick={()=> navigate('/poll')}>Poll</a>
                 <a onClick={()=> navigate('/blog')}>Blog</a>
                 <a onClick={()=> navigate('/profile')}>Profile</a>
                 <a onClick={()=> navigate('/login')}>Login</a>

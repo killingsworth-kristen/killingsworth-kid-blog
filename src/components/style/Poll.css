@@ -1,0 +1,15 @@
+.poll-container {
+    height: 88vh;
+}
+
+.iframe-container {
+    display: flex;
+    justify-content: center;
+}
+
+.iframe {
+    background: none;
+    margin: 3%;
+    width: 50vw;
+    height: 50vh;
+}

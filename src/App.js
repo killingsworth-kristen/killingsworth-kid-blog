@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 // import components
 import Navbar from './components/Navbar'
 import Home from './components/pages/Home'
+import Poll from './components/pages/Poll'
 import Footer from './components/Footer'
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         </header>
         <Routes>
           <Route path={'/'} element={<Home />} />
+          <Route path={'/poll'} element={<Poll />} />
           {/*<Route path={'/blog'} element={< Blog />} />
           <Route path={'/profile'} element={<Profile />} />
           <Route path={'/login'} element={<Login />} /> */}
