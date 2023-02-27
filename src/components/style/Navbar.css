@@ -21,19 +21,20 @@ a:hover {
     display: none;
 }
 
-#login-btn-container {
+.google-btn {
+    padding: 1vw;
+    color: white;
+    border: none;
+    font-size: 25px;
     background: none;
 }
 
-#login-btn {
+.google-btn:hover {
+    background-color: white;
+    color: black;
+}
+
+#login-btn-container, #logout-btn-container {
     background: none;
-}
-
-#logout-btn-container {
-    background: none
-}
-
-#logout-btn {
-    background: none
 }
 

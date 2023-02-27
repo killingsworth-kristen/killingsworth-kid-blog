@@ -1,0 +1,21 @@
+.hidden {
+    display: none;
+}
+
+.comment-card {
+    background: white;
+    border: solid white 2px;
+    border-radius: 15px;
+    padding: 1vw;
+    width: 90vw;
+    margin: 1vh 3vw 0 0;
+}
+
+.comment-user {
+    background: white;
+}
+
+.comment-text {
+    background: white;
+}
+
