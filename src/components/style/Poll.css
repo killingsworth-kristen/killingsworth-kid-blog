@@ -2,14 +2,29 @@
     height: 88vh;
 }
 
+.poll-title-container {
+    display: flex;
+    justify-content: center;
+}
+
+.poll-title {
+    font-family: 'Great Vibes';
+    font-size: 5vh;
+    text-align: center;
+    background: none;
+    /* padding: 1rem; */
+    /* border-radius: 2rem; */
+}
+
 .iframe-container {
     display: flex;
     justify-content: center;
+    height: 70vh;
 }
 
 .iframe {
     background: none;
     margin: 3%;
     width: 50vw;
-    height: 50vh;
+    height: 70vh;
 }
