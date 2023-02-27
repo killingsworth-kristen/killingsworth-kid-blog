@@ -20,3 +20,20 @@ a:hover {
 .hidden {
     display: none;
 }
+
+#login-btn-container {
+    background: none;
+}
+
+#login-btn {
+    background: none;
+}
+
+#logout-btn-container {
+    background: none
+}
+
+#logout-btn {
+    background: none
+}
+
