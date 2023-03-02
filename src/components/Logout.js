@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { GoogleLogout } from 'react-google-login'
 
-const clientId = '594289202000-pscqp621enkhgqd5cnlv36nosvthe37a.apps.googleusercontent.com';
-// const clientId = process.env.oath_id;
+const clientId = process.env.REACT_APP_OAUTH_ID;
 
 export default function Logout ({setLoggedIn, loggedIn}) {
 

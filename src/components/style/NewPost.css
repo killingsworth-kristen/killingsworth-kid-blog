@@ -1,0 +1,75 @@
+.hidden {
+    display: none;
+}
+
+h2, p, form, label, input, textarea {
+    background: white
+}
+
+.new-post-modal {
+    background: white;
+    width: 50vw;
+    height: auto;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    overflow: hidden;
+    border: 2px solid gray;
+    border-radius: 25px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    background: white;
+    padding: 1vw;
+}
+
+.modal-title {
+    font-size: 10vh;
+}
+
+.modal-close {
+    font-size: 5vh;
+    margin: auto 0;
+    padding: 1rem;
+}
+
+.modal-close:hover {
+    color: rgb(247, 78, 78);
+}
+
+.new-post-form {
+    margin: 1vw;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#post-title {
+    border: 1px solid gray;
+    border-radius: 5px;
+    font-size: 5vh;
+    flex: 1 1 90%;
+}
+
+#post-body {
+    margin: 1rem 0 0 0;
+    padding: .5rem;
+    flex: 1 1 95%;
+    border-radius: 10px;
+}
+
+#submit-post-btn {
+    margin: 1rem 45% 0 45%;
+    padding: .5rem;
+    background-color: gray;
+    border: none;
+    border-radius: 15px;
+}
+
+#submit-post-btn:hover {
+    background-color: rgb(128, 206, 128);
+}
+
+
+
