@@ -1,52 +1,129 @@
 // in dev mode
-const URL_PREFIX = "http://localhost:3000"
+const URL_PREFIX = "http://localhost:3001"
 // in prod mode
 // const URL_PREFIX= "deployed API url"
 
 const API = {
-    login: () => {
-        // post/create new user if not exist
-        return;
-    },
-    like: () => {
+    like: (currentPost, currentUser) => {
         // post/create new like
-        return;
+        return fetch(`${URL_PREFIX}/likes`, {
+            method: "POST",
+            body: {
+                "like": true,
+                "PostsId": `${currentPost}`,
+                "UsersId": `${currentUser}`
+            },
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res => res.json());
     },
-    unlike: () => {
+
+    unlike: (currentLike) => {
         // delete like
-        return;
+        return fetch(`${URL_PREFIX}/likes/${currentLike}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res => res.json());
     },
 
     // post API calls
     getPosts: () => {
         // get all posts
-        return;
+        return fetch(`${URL_PREFIX}/posts`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res => res.json())
     },
-    newPost: () => {
+
+    newPost: (currentUser, currentBody, currentTitle, currentImg) => {
         // post/create new post
-        return;
+        // return fetch(`${URL_PREFIX}/posts`, {
+        //     method: "POST",
+        //     body: {
+        //         "title":`${currentTitle}`,
+        //         "body":`${currentBody}`,
+        //         "image":`${currentImg}`,
+        //         "UsersId":`${currentUser}`
+        //     },
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //         "authorization": `Bearer ${token}`
+        //     }
+        // }).then(res => res.json())
     },
-    updatePost: () => {
+
+    updatePost: (currentPost, currentUser, currentBody, currentTitle, currentImg) => {
         // put/update post
-        return;
+        // return fetch(`${URL_PREFIX}/posts/${currentPost}`, {
+        //     method: "PUT",
+        //     body: {
+        //         "title":`${currentTitle}`,
+        //         "body":`${currentBody}`,
+        //         "image":`${currentImg}`,
+        //         "UsersId":`${currentUser}`
+        //     },
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //         "authorization": `Bearer ${token}`
+        //     }
+        // }).then(res => res.json())
     },
+
     deletePost: () => {
         // delete post
-        return;
+        // return fetch(`${URL_PREFIX}/posts/${currentPost}`, {
+        //     method: "DELETE",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //         "authorization": `Bearer ${token}`
+        //     }
+        // }).then(res => res.json())
     },
 
     // comment API calls
-    newComment: () => {
+    newComment: (currentBody, currentPost, currentUser) => {
         // post/create new comment
-        return;
+        return fetch(`${URL_PREFIX}/comments`, {
+            method: "POST",
+            body: {
+                "body": `${currentBody}`,
+                "PostsId": `${currentPost}`,
+                "UsersId":`${currentUser}`
+            },
+            headers: {
+                "Content-Type": "application/json",
+            }
+        }).then(res => res.json());
     },
-    updateComment: () => {
+
+    updateComment: (currentComment, currentBody, currentPost, currentUser) => {
         // put/update comment
-        return;
+        return fetch(`${URL_PREFIX}/comments/${currentComment}`, {
+            method: "PUT",
+            body: {
+                "body": `${currentBody}`,
+                "PostsId": `${currentPost}`,
+                "UsersId":`${currentUser}`
+            },
+            headers: {
+                "Content-Type": "application/json",
+            }
+        }).then(res => res.json());
     },
-    deleteComment: () => {
+    
+    deleteComment: (currentComment) => {
         // delete comment
-        return;
+        return fetch(`${URL_PREFIX}/comments/${currentComment}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            }
+        }).then(res => res.json());
     }
 
 }

@@ -2,11 +2,12 @@ nav {
     text-align: end;
     display: flex;
     justify-content: end;
-    background: none;
+    background: linear-gradient(90deg, rgba(242,154,233,1) 0%, rgba(208,157,245,1) 40%, rgba(103,177,236,1) 100%);
+    padding-bottom: 2vh;
 }
 
 a {
-    font-size: 25px;
+    font-size: 3vh;
     padding: 1%;
     color: white;
     background: none;
@@ -22,6 +23,11 @@ a:hover {
 }
 
 .google-btn {
+    background: none;
+    padding: 1%;
+}
+
+.logout-btn {
     padding: 1vw;
     color: white;
     border: none;
@@ -29,7 +35,7 @@ a:hover {
     background: none;
 }
 
-.google-btn:hover {
+.g_id_signout:hover {
     background-color: white;
     color: black;
 }
@@ -37,4 +43,5 @@ a:hover {
 #login-btn-container, #logout-btn-container {
     background: none;
 }
+
 

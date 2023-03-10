@@ -1,7 +1,7 @@
 import './App.css';
 import './assets/fonts/fonts.css'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // import components
 import Navbar from './components/Navbar';
@@ -12,6 +12,7 @@ import Footer from './components/Footer';
 import NewPost from './components/NewPost'
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
   const [admin, setAdmin] = useState(false);
   const [postMode, setPostMode] = useState('Create');
   const [openModal, setOpenModal] = useState(false);
@@ -30,7 +31,7 @@ function App() {
     <div className="App">
       <Router>
         <header>
-            <Navbar admin={admin} setAdmin={setAdmin}/>
+            <Navbar admin={admin} setAdmin={setAdmin} loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
         </header>
         <NewPost postMode={postMode} setPostMode={setPostMode} openModal={openModal} setOpenModal={setOpenModal}/>
         <Routes>

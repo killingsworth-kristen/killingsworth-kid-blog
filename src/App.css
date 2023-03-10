@@ -2,7 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background: linear-gradient(90deg, rgba(242,154,233,1) 0%, rgba(208,157,245,1) 40%, rgba(103,177,236,1) 100%);;
+  background: none;
+  /* background: linear-gradient(90deg, rgba(242,154,233,1) 0%, rgba(208,157,245,1) 40%, rgba(103,177,236,1) 100%); */
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 

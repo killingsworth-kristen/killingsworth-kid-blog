@@ -1,30 +1,55 @@
 import React, { useEffect, useState } from 'react';
+import JWT_decode from 'jwt-decode'
 import { useNavigate } from 'react-router-dom';
-import { gapi } from 'gapi-script'
 import './style/Navbar.css'
 
-import Login from './Login';
-import Logout from './Logout';
 
-const clientId = '594289202000-pscqp621enkhgqd5cnlv36nosvthe37a.apps.googleusercontent.com';
-// const clientId = process.env.oath_id;
-export default function Navbar ({admin, setAdmin}) {
+export default function Navbar ({admin, setAdmin, loggedIn, setLoggedIn}) {
     const navigate = useNavigate()
 // if logged in !== true redirect from profile to login
 // if logged in !== true hide logout button else hide login button
-    useEffect(()=>{
-        function start() {
-            gapi.client.init({
-                clientId: clientId,
-                scope: ""
-            })
-        };
+    // state
+    const [user, setUser] = useState({});
+    const [token, setToken] = useState("");
 
-        gapi.load('client:auth2', start);
-    });
+    // google login callback 
+    const handleCallbackResponse = (response) => {
+        console.log("JWT token: " + response.credential);
+        let UserObj = JWT_decode(response.credential);
+        console.log(UserObj);
+        setUser(UserObj);
+        setLoggedIn(true)
+        setToken(response);
+        if (UserObj.email === "kristenk2017@gmail.com") {
+            setAdmin(true);
+        } else {
+            setAdmin(false);
+        }
+    }
 
-      // state
-      const [loggedIn, setLoggedIn] = useState(false);
+
+    // google login init
+    useEffect(() => {
+        /* global google */
+        google.accounts.id.initialize({
+            client_id: process.env.REACT_APP_OAUTH_ID,
+            callback: handleCallbackResponse,
+            });
+        
+        google.accounts.id.renderButton(
+            document.getElementById(`sign-in-div`),
+            {size: 'large', shape: 'pill'}
+        );
+
+    },[loggedIn])
+
+    // google logout
+    const handleLogout = (e) => {
+    e.preventDefault();
+    setUser({});
+    setLoggedIn(false);
+    setAdmin(false);
+    }
 
     return (
         <>
@@ -33,8 +58,8 @@ export default function Navbar ({admin, setAdmin}) {
                 <a onClick={()=> navigate('/poll')}>Poll</a>
                 <a onClick={()=> navigate('/blog')}>Blog</a>
                 {/* <a onClick={()=> navigate('/profile')}>Profile</a> */}
-                <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} admin={admin} setAdmin={setAdmin}/>
-                <Logout loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
+                <div className={loggedIn ? "google-btn hidden" : "google-btn"} id="sign-in-div"></div>
+                <button className={loggedIn ? "logout-btn" : "logout-btn hidden"} onClick={handleLogout}>Logout</button>
             </nav>
         </>
 

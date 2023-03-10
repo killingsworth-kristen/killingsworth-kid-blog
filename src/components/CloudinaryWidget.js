@@ -1,6 +1,8 @@
 import React from 'react';
 
-export default function CloudinaryWidget () {
+import './style/CloudinaryWidget.css'
+
+export default function CloudinaryWidget ({postImg, setPostImg}) {
 
     const handleWidgetOpen = () => {
         const widget = window.cloudinary.createUploadWidget(
@@ -11,12 +13,17 @@ export default function CloudinaryWidget () {
             (error, result) => {
                 if (result.event === "success") {
                 console.log(result);
+                setPostImg(result.info.path)
+                } else {
+                    console.log("Error occurred")
                 }
             }
             );
             widget.open(); // open up the widget after creation
         };
         return (
-            <button onClick={handleWidgetOpen}>Add Image(s)</button>
+            <div className="cloudinary-upload-btn-container">
+                <button id="cloudinary-upload-btn" onClick={handleWidgetOpen}>Add Image(s)</button>
+            </div>
         )
     }

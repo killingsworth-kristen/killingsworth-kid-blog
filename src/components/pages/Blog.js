@@ -1,22 +1,38 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-import BlogCard from './../BlogCard'
+import API from './../../utils/API.js'
+import BlogCard from './../BlogCard.js'
 
 import './../style/Blog.css'
 
 export default function Blog ({admin, handleNewPost, handleEditPost}) {
     // state
-    
+    const [posts, setPosts] = useState([])
+
+    useEffect(()  => {
+        const getAllPosts = async () => {
+            let allPosts = await API.getPosts()
+            // await allPosts.map((post => {postArr = [post.id, post.title, post.body, post.image, post.date]}))
+            setPosts(allPosts)
+        }
+        getAllPosts()
+    },[])
+
     return (
         <>
         <section className="blog-container">
             <button className={admin === true ? 'top-admin-btn' : 'top-admin-btn hidden'} onClick={handleNewPost}>
                 <h2 className="add-post-btn">ADD POST</h2>
             </button>
-            <BlogCard admin={admin} handleEditPost={handleEditPost}/>
-            <BlogCard admin={admin} handleEditPost={handleEditPost}/>
-            <BlogCard admin={admin} handleEditPost={handleEditPost}/>
-            <BlogCard admin={admin} handleEditPost={handleEditPost}/>
+           <div className='blog-posts-container'> 
+                {posts.map((post) => {
+                // console.log("this is the blogCard map: "+ post)
+                return (<BlogCard key={post.id} 
+                    postObj={post}
+                    admin={admin} 
+                    handleEditPost={handleEditPost}/>)
+            })}
+            </div>
         </section>
         </> 
     )

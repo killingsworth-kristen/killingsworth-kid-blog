@@ -1,11 +1,11 @@
 import './style/Comment.css'
 
-export default function Comment () {
+export default function Comment ({username, body}) {
     return (
         <>
         <div className="comment-card">
-            <h6 className='comment-user'>Username</h6>
-            <p className='comment-text'>Ea sunt dolor cillum esse ut id irure mollit eu pariatur cillum.</p>
+            <h6 className='comment-user'>{username}</h6>
+            <p className='comment-text'>{body}</p>
         </div>
         </>
     )

@@ -2,7 +2,8 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    height: 87vh;
+    height: 89vh;
+    background: linear-gradient(90deg, rgba(242,154,233,1) 0%, rgba(208,157,245,1) 40%, rgba(103,177,236,1) 100%);
 }
 
 .baby-h1 {

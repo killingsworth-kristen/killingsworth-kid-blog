@@ -1,0 +1,12 @@
+.cloudinary-upload-btn-container {
+    display: flex;
+    justify-content: center;
+    background: white;
+}
+
+#cloudinary-upload-btn {
+    padding: 1rem;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 40px;
+}
