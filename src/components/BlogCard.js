@@ -10,9 +10,9 @@ export default function BlogCard ({admin, handleEditPost, postObj}) {
     const [showComments, setShowComments] = useState(false)
     const [comments, setComments] = useState(postObj.Comments)
 
-    console.log(postObj.Comments)
     // functions
-    const handleLike = (e) => {
+        const handleLike = (e) => {
+        API.like("1","1234")
         setLiked(true);
     }
 
@@ -51,18 +51,16 @@ export default function BlogCard ({admin, handleEditPost, postObj}) {
                 </button>
             </div>
             <div className="admin-btn-container">
-                <button className={admin === true ? "admin-btn" : "admin-btn hidden"} onClick={handleEditPost}>
+                <button className={admin === 'true' ? "admin-btn" : "admin-btn hidden"} onClick={handleEditPost}>
                     <h4 className="edit-post-btn">EDIT POST</h4>
                 </button>
-                <button className={admin === true ? "admin-btn" : "admin-btn hidden"}>
+                <button className={admin === 'true' ? "admin-btn" : "admin-btn hidden"}>
                     <h4 className="delete-post-btn">DELETE POST</h4>
                 </button>
             </div>
         </div>
         <div className={showComments === false ? "comments-container hidden" : "comments-container"}>
             {comments.map((comment)=>{
-                console.log(comment.id, comment.UsersId, comment.body)
-                console.log(typeof comment.id, typeof comment.UsersId, typeof comment.body)
                 return (<Comment 
                     key={comment.id}
                     username={comment.UsersId}

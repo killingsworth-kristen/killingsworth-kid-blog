@@ -21,7 +21,7 @@ export default function Blog ({admin, handleNewPost, handleEditPost}) {
     return (
         <>
         <section className="blog-container">
-            <button className={admin === true ? 'top-admin-btn' : 'top-admin-btn hidden'} onClick={handleNewPost}>
+            <button className={admin === `true` ? 'top-admin-btn' : 'top-admin-btn hidden'} onClick={handleNewPost}>
                 <h2 className="add-post-btn">ADD POST</h2>
             </button>
            <div className='blog-posts-container'> 

@@ -1,6 +1,4 @@
 .footer-container {
-    position: fixed;
-    bottom: 0;
     width: 100%;
     padding: 1vh 0;
     background: linear-gradient(90deg, rgba(242,154,233,1) 0%, rgba(208,157,245,1) 40%, rgba(103,177,236,1) 100%);

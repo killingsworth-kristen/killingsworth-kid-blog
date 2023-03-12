@@ -1,38 +1,39 @@
 import React, { useEffect, useState } from 'react';
 import JWT_decode from 'jwt-decode'
+import API from './../utils/API'
 import { useNavigate } from 'react-router-dom';
 import './style/Navbar.css'
 
 
-export default function Navbar ({admin, setAdmin, loggedIn, setLoggedIn}) {
+export default function Navbar ({admin, setAdmin, loggedIn, setLoggedIn, token, setToken, user, setUser}) {
     const navigate = useNavigate()
-// if logged in !== true redirect from profile to login
-// if logged in !== true hide logout button else hide login button
-    // state
-    const [user, setUser] = useState({});
-    const [token, setToken] = useState("");
 
     // google login callback 
     const handleCallbackResponse = (response) => {
-        console.log("JWT token: " + response.credential);
-        let UserObj = JWT_decode(response.credential);
-        console.log(UserObj);
-        setUser(UserObj);
-        setLoggedIn(true)
-        setToken(response);
-        if (UserObj.email === "kristenk2017@gmail.com") {
-            setAdmin(true);
-        } else {
-            setAdmin(false);
-        }
-    }
+            API.postToken(response.credential);
+            let UserObj = JWT_decode(response.credential);
+            setUser(UserObj);
+            setToken(response.credential);
+            setLoggedIn(true)
+            if (UserObj.email === "kristenk2017@gmail.com") {
+                setAdmin(true)
+                localStorage.setItem("admin", true)
+            } else {
+                setAdmin(false)
+                localStorage.setItem("admin", false)
+            }
+            localStorage.setItem("token", JSON.stringify(response.credential))
+            localStorage.setItem("user", JSON.stringify(UserObj))
+            localStorage.setItem("loggedIn", true)
 
+    }
 
     // google login init
     useEffect(() => {
         /* global google */
         google.accounts.id.initialize({
             client_id: process.env.REACT_APP_OAUTH_ID,
+            auto_selecct: true,
             callback: handleCallbackResponse,
             });
         
@@ -40,15 +41,17 @@ export default function Navbar ({admin, setAdmin, loggedIn, setLoggedIn}) {
             document.getElementById(`sign-in-div`),
             {size: 'large', shape: 'pill'}
         );
-
-    },[loggedIn])
+    },[])
 
     // google logout
     const handleLogout = (e) => {
     e.preventDefault();
     setUser({});
+    localStorage.setItem("user", "")
     setLoggedIn(false);
+    localStorage.setItem("loggedIn", false)
     setAdmin(false);
+    localStorage.setItem("admin", false)
     }
 
     return (
@@ -60,6 +63,12 @@ export default function Navbar ({admin, setAdmin, loggedIn, setLoggedIn}) {
                 {/* <a onClick={()=> navigate('/profile')}>Profile</a> */}
                 <div className={loggedIn ? "google-btn hidden" : "google-btn"} id="sign-in-div"></div>
                 <button className={loggedIn ? "logout-btn" : "logout-btn hidden"} onClick={handleLogout}>Logout</button>
+                {/* <div id="g_id_onload"
+                    data-client_id={process.env.REACT_APP_OAUTH_ID}
+                    data-auto_select="true"
+                    data-login_uri="http://localhost:3000">
+                </div>
+                <button className="logout-btn g_id_signout">Logout</button> */}
             </nav>
         </>
 

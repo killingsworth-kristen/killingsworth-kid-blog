@@ -2,7 +2,7 @@ import React from 'react';
 
 import './style/CloudinaryWidget.css'
 
-export default function CloudinaryWidget ({postImg, setPostImg}) {
+export default function CloudinaryWidget ({setPostImg}) {
 
     const handleWidgetOpen = () => {
         const widget = window.cloudinary.createUploadWidget(
@@ -12,10 +12,15 @@ export default function CloudinaryWidget ({postImg, setPostImg}) {
             },
             (error, result) => {
                 if (result.event === "success") {
-                console.log(result);
-                setPostImg(result.info.path)
+                    console.log('---------------------------------------------------------')
+                    console.log(result);
+                    console.log(result.info.secure_url)
+                    setPostImg(result.info.secure_url)
+                    console.log('---------------------------------------------------------')
+                // setPostImg(result.info.path)
                 } else {
                     console.log("Error occurred")
+                    console.log(error)
                 }
             }
             );

@@ -4,15 +4,35 @@ const URL_PREFIX = "http://localhost:3001"
 // const URL_PREFIX= "deployed API url"
 
 const API = {
+    postToken: (token) => {
+        // get user from token
+        return fetch(`${URL_PREFIX}/users/token`, {
+            method: "POST",
+            body: JSON.stringify({token: `${token}`}),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res => res.json());
+    },
+
+    getUserFromToken: () => {
+        return fetch(`${URL_PREFIX}/users/token`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res => res.json());
+    },
+
     like: (currentPost, currentUser) => {
         // post/create new like
         return fetch(`${URL_PREFIX}/likes`, {
             method: "POST",
-            body: {
-                "like": true,
-                "PostsId": `${currentPost}`,
-                "UsersId": `${currentUser}`
-            },
+            // body: {
+            //     "like": true,
+            //     "PostsId": `${currentPost}`,
+            //     "UsersId": `${currentUser}`
+            // },
             headers: {
                 "Content-Type": "application/json"
             }
@@ -40,21 +60,16 @@ const API = {
         }).then(res => res.json())
     },
 
-    newPost: (currentUser, currentBody, currentTitle, currentImg) => {
+    newPost: (postObj) => {
         // post/create new post
-        // return fetch(`${URL_PREFIX}/posts`, {
-        //     method: "POST",
-        //     body: {
-        //         "title":`${currentTitle}`,
-        //         "body":`${currentBody}`,
-        //         "image":`${currentImg}`,
-        //         "UsersId":`${currentUser}`
-        //     },
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //         "authorization": `Bearer ${token}`
-        //     }
-        // }).then(res => res.json())
+        console.log(postObj)
+        return fetch(`${URL_PREFIX}/posts`, {
+            method: "POST",
+            body: JSON.stringify(postObj),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res => res.json())
     },
 
     updatePost: (currentPost, currentUser, currentBody, currentTitle, currentImg) => {
@@ -69,7 +84,6 @@ const API = {
         //     },
         //     headers: {
         //         "Content-Type": "application/json",
-        //         "authorization": `Bearer ${token}`
         //     }
         // }).then(res => res.json())
     },

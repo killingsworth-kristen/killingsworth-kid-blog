@@ -7,7 +7,7 @@ nav {
 }
 
 a {
-    font-size: 3vh;
+    font-size: 35px;
     padding: 1%;
     color: white;
     background: none;
@@ -31,7 +31,7 @@ a:hover {
     padding: 1vw;
     color: white;
     border: none;
-    font-size: 25px;
+    font-size: 35px;
     background: none;
 }
 

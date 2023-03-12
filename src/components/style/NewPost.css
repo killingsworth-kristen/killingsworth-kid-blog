@@ -2,9 +2,9 @@
     display: none;
 }
 
-h2, p, form, label, input, textarea {
+/* h2, p, form, label, input, textarea {
     background: white
-}
+} */
 
 .new-post-modal {
     background: white;
@@ -43,6 +43,17 @@ h2, p, form, label, input, textarea {
     margin: 1vw;
     display: flex;
     flex-wrap: wrap;
+}
+
+.new-post-img-container {
+    display: flex;
+    justify-content: center;
+}
+
+.new-post-img {
+    width: 200px;
+    height: auto;
+    justify-self: center
 }
 
 #post-title {
