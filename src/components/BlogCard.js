@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
 
+import './style/BlogCard.css'
 import API from './../utils/API.js'
 import Comment from "./Comment"
+import NewComment from "./NewComment.js"
 
 export default function BlogCard ({admin, handleEditPost, postObj, loggedIn, user}) {
     // declared variables
@@ -14,8 +16,15 @@ export default function BlogCard ({admin, handleEditPost, postObj, loggedIn, use
     const [LikesCount, setLikesCount] = useState(numLikes)
     const [showComments, setShowComments] = useState(false);
     const [comments, setComments] = useState(postObj.Comments);
+    const [showNewComment, setShowNewComments] = useState(false);
+    const [newComment, setNewComment] = useState("ADD COMMENT");
 
     useEffect( () => {
+        if (loggedIn === false) {
+            setLiked(false)
+            localStorage.setItem(`likedPost${postObj.id}`, false)
+            return;
+        }
         API.getAllLikes().then((res)=>{
             const allLikes = res
             allLikes.map((like)=>{
@@ -80,6 +89,23 @@ export default function BlogCard ({admin, handleEditPost, postObj, loggedIn, use
         };
     }
 
+    const handleShowNewComment = (e) => {
+        e.preventDefault()
+        if (loggedIn == false) {
+            alert(`you must be logged in to add a comment!`)
+            return;
+        }
+        if (showNewComment === false) {
+            setNewComment("CANCEL");
+            setShowNewComments(true);
+            e.target.classList.add("red")
+        } else {
+            setNewComment("ADD COMMENT");
+            setShowNewComments(false);
+            e.target.classList.remove('red');
+        }
+    }
+
     return (
         <>
         <div className="blog-card" id={postObj.id}>
@@ -110,11 +136,21 @@ export default function BlogCard ({admin, handleEditPost, postObj, loggedIn, use
             </div>
         </div>
         <div className={showComments === false ? "comments-container hidden" : "comments-container"}>
+            <div className="new-comment-container">
+                <button className="new-comment-btn" onClick={handleShowNewComment}>{newComment}</button>
+                <div className={showNewComment === false ? "hidden" : ""}> 
+                    <NewComment user={user} PostsId={postObj.id}/>
+                </div>
+            </div>
             {comments.map((comment)=>{
                 return (<Comment 
                     key={comment.id}
-                    username={comment.UsersId}
+                    username={comment.User.name}
+                    commentOwner={comment.UsersId}
                     body={comment.body}
+                    user={user}
+                    loggedIn={loggedIn}
+                    commentObj={comment}
                 />)
             })}
         </div>

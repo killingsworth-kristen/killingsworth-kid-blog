@@ -25,6 +25,7 @@ export default function Navbar ({admin, setAdmin, loggedIn, setLoggedIn, token, 
             localStorage.setItem("token", JSON.stringify(response.credential))
             localStorage.setItem("user", JSON.stringify(UserObj))
             localStorage.setItem("loggedIn", true)
+            window.location.reload()
 
     }
 
@@ -45,13 +46,14 @@ export default function Navbar ({admin, setAdmin, loggedIn, setLoggedIn, token, 
 
     // google logout
     const handleLogout = (e) => {
-    e.preventDefault();
-    setUser({});
-    localStorage.setItem("user", "")
-    setLoggedIn(false);
-    localStorage.setItem("loggedIn", false)
-    setAdmin(false);
-    localStorage.setItem("admin", false)
+        e.preventDefault();
+        setUser({});
+        localStorage.setItem("user", "")
+        setLoggedIn(false);
+        localStorage.setItem("loggedIn", false)
+        setAdmin(false);
+        localStorage.setItem("admin", false)
+        window.location.reload()
     }
 
     return (

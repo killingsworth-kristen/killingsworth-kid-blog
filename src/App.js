@@ -19,7 +19,14 @@ function App() {
   const [token, setToken] = useState("");
 
   useEffect(()=>{
-    const storedUser = JSON.parse(localStorage.getItem('user'))
+    let storedUser;
+    if (localStorage.getItem('user') === "" ) {
+      storedUser = localStorage.getItem('user')
+      
+    } else {
+      storedUser = JSON.parse(localStorage.getItem('user'))
+    }
+    
     if (storedUser === null) {
       return;
     } else if (storedUser.email === "kristenk2017@gmail.com") {

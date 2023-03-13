@@ -1,0 +1,105 @@
+.blog-card {
+    background-color: white;
+    padding: 1vw;
+    margin: 2vh 3vw 0 3vw;
+    border: solid 2px white;
+    border-radius: 15px;
+}
+
+.blog-title {
+    background-color: white;
+}
+
+.blog-picture {
+    width: 300px;
+    height: auto;
+}
+
+.blog-text {
+    background-color: white;
+    margin: 3vh 0 3vh 0;
+}
+
+.blog-date {
+    background-color: white;
+}
+
+/* buttons */
+.buttons-container {
+    display: flex;
+    background-color: white;
+}
+
+.like-btn {
+    background-color: white;
+    width: 28px;
+    border: none;
+    margin-right: 1vw;
+}
+
+.heart-img, .comments-img {
+    background-color: white;
+}
+
+/* comments */
+.new-comment-btn {
+    justify-self: center;
+    align-items: start;
+    margin: 1vh 0 1vh 0;
+    padding: .5rem;
+    background: white;
+    border: none;
+    border-radius: 20px;
+}
+
+.comments-btn {
+    display: flex;
+    background-color: white;
+    width: 28px;
+    border: none;
+}
+
+.num-comments {
+    background-color: white;
+    font-size: 20px;
+    margin: auto 0;
+}
+
+.comments-container {
+    display: grid;
+    align-content: end;
+    justify-content: end;
+}
+
+.admin-btn-container {
+    background-color: white;
+    display: flex;
+    justify-content: end;
+}
+
+/* admin buttons */
+.admin-btn {
+    margin: .5rem;
+    border-radius: 20px;
+    overflow: hidden;
+    border: none;
+}
+
+.edit-post-btn {
+    padding: .5rem;
+    background-color: rgb(248, 193, 92);
+
+}
+
+.delete-post-btn {
+    padding: .5rem;
+    background-color: rgb(247, 78, 78);
+}
+
+.red {
+    background-color: rgb(247, 78, 78);
+}
+
+.hidden {
+    display: none;
+}

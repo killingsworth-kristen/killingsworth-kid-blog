@@ -106,30 +106,22 @@ const API = {
     },
 
     // comment API calls
-    newComment: (currentBody, currentPost, currentUser) => {
+    newComment: (commentObj) => {
         // post/create new comment
         return fetch(`${URL_PREFIX}/comments`, {
             method: "POST",
-            body: {
-                "body": `${currentBody}`,
-                "PostsId": `${currentPost}`,
-                "UsersId":`${currentUser}`
-            },
+            body: JSON.stringify(commentObj),
             headers: {
                 "Content-Type": "application/json",
             }
         }).then(res => res.json());
     },
 
-    updateComment: (currentComment, currentBody, currentPost, currentUser) => {
+    updateComment: (editCommentObj, commentId) => {
         // put/update comment
-        return fetch(`${URL_PREFIX}/comments/${currentComment}`, {
+        return fetch(`${URL_PREFIX}/comments/${commentId}`, {
             method: "PUT",
-            body: {
-                "body": `${currentBody}`,
-                "PostsId": `${currentPost}`,
-                "UsersId":`${currentUser}`
-            },
+            body: JSON.stringify(editCommentObj),
             headers: {
                 "Content-Type": "application/json",
             }

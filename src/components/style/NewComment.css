@@ -1,0 +1,27 @@
+.new-comment-form {
+    display: flex;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 15px;
+    width: fit-content;
+}
+
+.comment-body {
+    background-color: white;
+    width: 50vw;
+    margin-left: .5rem;
+}
+
+.submit-comment-btn {
+    background-color: gray;
+    color: black;
+    border: none;
+    border-radius: 15px;
+    padding: .5rem;
+    margin-left: .5rem;
+}
+
+.submit-comment-btn:hover {
+    background-color: rgb(128, 206, 128);
+}
+
