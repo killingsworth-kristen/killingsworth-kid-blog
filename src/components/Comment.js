@@ -4,20 +4,27 @@ import API from './../utils/API.js'
 
 import './style/Comment.css'
 
-export default function Comment ({username, body, user, loggedIn, commentOwner, commentObj}) {
+export default function Comment ({username, body, user, loggedIn, commentOwner, commentObj, admin}) {
     // state
-    const [showCommentBtns, setShowCommentButtons] = useState(false);
     const [editComment, setEditComment] = useState(false);
-    const [commentBody, setCommentBody] = useState("")
+    const [commentBody, setCommentBody] = useState("");
+    const [showCommentBtns, setShowCommentButtons] = useState(false);
+
 
     useEffect(()=>{
         if (loggedIn === false) {
             setShowCommentButtons(false);
             return;
         } else if (user.sub === commentOwner) {
+            console.log(`commentOwner === user.sub`)
+            console.log(commentObj.id, commentOwner, user.sub)
             setShowCommentButtons(true);
             return;
+        } else if (admin === true) {
+            setShowCommentButtons(true);
         } else {
+            console.log(`commentOwner !== user.sub`)
+            console.log(commentObj.id, commentOwner, user.sub)
             setShowCommentButtons(false);
             return;
         }
@@ -88,7 +95,7 @@ export default function Comment ({username, body, user, loggedIn, commentOwner, 
                     <h6 className='comment-user'>{username}</h6>
                     <p className='comment-body'>{body}</p>
                 </div>
-                <div className='comment-btns-container'>
+                <div className={showCommentBtns === true ? 'comment-btns-container': 'comment-btns-container hidden'}>
                     <button className={`edit-comment-btn commentOwner-${commentOwner}`} id={`edit-comment-${commentObj.id}`} onClick={handleEditComment}>EDIT COMMENT</button>
                     <button className={`delete-comment-btn commentOwner-${commentOwner}`} id={`delete-comment-${commentObj.id}`} onClick={handleDeleteComment}>DELETE COMMENT</button>
                 </div>

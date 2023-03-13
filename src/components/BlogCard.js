@@ -18,10 +18,12 @@ export default function BlogCard ({admin, handleEditPost, postObj, loggedIn, use
     const [comments, setComments] = useState(postObj.Comments);
     const [showNewComment, setShowNewComments] = useState(false);
     const [newComment, setNewComment] = useState("ADD COMMENT");
+    // const [showCommentBtns, setShowCommentButtons] = useState(false);
 
     useEffect( () => {
         if (loggedIn === false) {
             setLiked(false)
+            // setShowCommentButtons(false);
             localStorage.setItem(`likedPost${postObj.id}`, false)
             return;
         }
@@ -46,7 +48,20 @@ export default function BlogCard ({admin, handleEditPost, postObj, loggedIn, use
                 likedPost = false
                 localStorage.setItem(`likedPost${postObj.id}`, false)
             }
-        })      
+        }) 
+        // comments.map((comment)=>{
+        //     if (user.sub === comment.UsersId) {
+        //         console.log(`commentOwner === user.sub`)
+        //         console.log(comment.id, comment.UsersId, user.sub)
+        //         setShowCommentButtons(true);
+        //         return;
+        //     } else {
+        //         console.log(`commentOwner !== user.sub`)
+        //         console.log(comment.id, comment.UsersId, user.sub)
+        //         setShowCommentButtons(false);
+        //         return;
+        //     }
+        // })  
     },[])
     
 
@@ -106,6 +121,8 @@ export default function BlogCard ({admin, handleEditPost, postObj, loggedIn, use
         }
     }
 
+
+
     return (
         <>
         <div className="blog-card" id={postObj.id}>
@@ -151,6 +168,7 @@ export default function BlogCard ({admin, handleEditPost, postObj, loggedIn, use
                     user={user}
                     loggedIn={loggedIn}
                     commentObj={comment}
+                    admin={admin}
                 />)
             })}
         </div>
