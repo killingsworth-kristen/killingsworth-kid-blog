@@ -3,9 +3,11 @@ import { useState, useEffect } from 'react'
 import API from './../../utils/API.js'
 import BlogCard from './../BlogCard.js'
 
+import Footer from './../Footer.js'
+
 import './../style/Blog.css'
 
-export default function Blog ({admin, handleNewPost, handleEditPost}) {
+export default function Blog ({admin, handleNewPost, handleEditPost, loggedIn, user}) {
     // state
     const [posts, setPosts] = useState([])
 
@@ -21,7 +23,7 @@ export default function Blog ({admin, handleNewPost, handleEditPost}) {
     return (
         <>
         <section className="blog-container">
-            <button className={admin === `true` ? 'top-admin-btn' : 'top-admin-btn hidden'} onClick={handleNewPost}>
+            <button className={admin === true ? 'top-admin-btn' : 'top-admin-btn hidden'} onClick={handleNewPost}>
                 <h2 className="add-post-btn">ADD POST</h2>
             </button>
            <div className='blog-posts-container'> 
@@ -30,9 +32,12 @@ export default function Blog ({admin, handleNewPost, handleEditPost}) {
                 return (<BlogCard key={post.id} 
                     postObj={post}
                     admin={admin} 
-                    handleEditPost={handleEditPost}/>)
+                    handleEditPost={handleEditPost}
+                    loggedIn={loggedIn}
+                    user={user}/>)
             })}
             </div>
+            <Footer />
         </section>
         </> 
     )

@@ -24,24 +24,30 @@ const API = {
         }).then(res => res.json());
     },
 
-    like: (currentPost, currentUser) => {
-        // post/create new like
+    getAllLikes: () =>{
+        // get all likes
         return fetch(`${URL_PREFIX}/likes`, {
-            method: "POST",
-            // body: {
-            //     "like": true,
-            //     "PostsId": `${currentPost}`,
-            //     "UsersId": `${currentUser}`
-            // },
+            method: "GET",
             headers: {
                 "Content-Type": "application/json"
             }
         }).then(res => res.json());
     },
 
-    unlike: (currentLike) => {
+    like: (likeObj) => {
+        // post/create new like
+        return fetch(`${URL_PREFIX}/likes`, {
+            method: "POST",
+            body: JSON.stringify(likeObj),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res => res.json());
+    },
+
+    unlike: (likeId) => {
         // delete like
-        return fetch(`${URL_PREFIX}/likes/${currentLike}`, {
+        return fetch(`${URL_PREFIX}/likes/${likeId}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"

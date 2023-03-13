@@ -1,16 +1,14 @@
 import './App.css';
-import './assets/fonts/fonts.css'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import './assets/fonts/fonts.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from 'react';
-import API from './utils/API.js'
 
 // import components
 import Navbar from './components/Navbar';
 import Home from './components/pages/Home';
 import Poll from './components/pages/Poll';
 import Blog from './components/pages/Blog';
-import Footer from './components/Footer';
-import NewPost from './components/NewPost'
+import NewPost from './components/NewPost';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -21,17 +19,22 @@ function App() {
   const [token, setToken] = useState("");
 
   useEffect(()=>{
-    const storedUser = JSON.parse(localStorage.user)
-    if (storedUser.email === "kristenk2017@gmail.com") {
+    const storedUser = JSON.parse(localStorage.getItem('user'))
+    if (storedUser === null) {
+      return;
+    } else if (storedUser.email === "kristenk2017@gmail.com") {
       setUser(storedUser)
-      setAdmin(localStorage.setItem("admin", true))
-      setLoggedIn(localStorage.loggedIn)
+      localStorage.setItem("admin", true)
+      setAdmin(true)
+      localStorage.setItem("loggedIn", true)
+      setLoggedIn(true)
       setToken(localStorage.token)
-    }
-    if (storedUser) {
+    } else if (storedUser) {
       setUser(storedUser)
-      setAdmin(localStorage.admin)
-      setLoggedIn(localStorage.loggedIn)
+      localStorage.setItem("admin", false)
+      setAdmin(false)
+      localStorage.setItem("loggedIn", true)
+      setLoggedIn(true)
       setToken(localStorage.token)
     } else {
       return;
@@ -62,11 +65,10 @@ function App() {
             admin={admin} 
             setAdmin={setAdmin} 
             handleEditPost={handleEditPost} 
-            handleNewPost={handleNewPost}/>} />
+            handleNewPost={handleNewPost}
+            loggedIn={loggedIn}
+            user={user}/>} />
         </Routes>
-        <footer>
-          <Footer/>
-        </footer>
       </Router>
     </div>
   );

@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from './../Footer.js'
 import './../style/Home.css'
 
 
@@ -18,6 +19,9 @@ export default function Home () {
                     <h3>Registries coming soon!</h3>
                 </div>
             </section>
+            <footer>
+                <Footer />
+            </footer>
         </>
     )
 }

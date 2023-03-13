@@ -2,14 +2,13 @@ nav {
     text-align: end;
     display: flex;
     justify-content: end;
-    background: linear-gradient(90deg, rgba(242,154,233,1) 0%, rgba(208,157,245,1) 40%, rgba(103,177,236,1) 100%);
     padding-bottom: 2vh;
 }
 
 a {
     font-size: 35px;
     padding: 1%;
-    color: white;
+    color: slategray;
     background: none;
 }
 
@@ -29,10 +28,15 @@ a:hover {
 
 .logout-btn {
     padding: 1vw;
-    color: white;
+    color: slategray;
     border: none;
     font-size: 35px;
     background: none;
+}
+
+.logout-btn:hover {
+    color: black;
+    background-color: white;
 }
 
 .g_id_signout:hover {

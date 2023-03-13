@@ -5,9 +5,13 @@
 /* h2, p, form, label, input, textarea {
     background: white
 } */
+label {
+    background-color: inherit;
+    font-size: 3vh;
+}
 
 .new-post-modal {
-    background: white;
+    background-color: white;
     width: 50vw;
     height: auto;
     position: absolute;
@@ -19,6 +23,7 @@
 }
 
 .modal-header {
+    background-color: inherit;
     display: flex;
     justify-content: space-between;
     background: white;
@@ -26,10 +31,12 @@
 }
 
 .modal-title {
+    background-color: inherit;
     font-size: 10vh;
 }
 
 .modal-close {
+    background-color: inherit;
     font-size: 5vh;
     margin: auto 0;
     padding: 1rem;
@@ -40,12 +47,14 @@
 }
 
 .new-post-form {
+    background-color: inherit;
     margin: 1vw;
     display: flex;
     flex-wrap: wrap;
 }
 
 .new-post-img-container {
+    background-color: inherit;
     display: flex;
     justify-content: center;
 }
@@ -57,6 +66,7 @@
 }
 
 #post-title {
+    background-color: inherit;
     border: 1px solid gray;
     border-radius: 5px;
     font-size: 5vh;
@@ -64,6 +74,7 @@
 }
 
 #post-body {
+    background-color: inherit;
     margin: 1rem 0 0 0;
     padding: .5rem;
     flex: 1 1 95%;
@@ -71,6 +82,7 @@
 }
 
 #submit-post-btn {
+    background-color: inherit;
     margin: 1rem 45% 0 45%;
     padding: .5rem;
     background-color: gray;
