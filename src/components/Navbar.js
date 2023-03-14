@@ -7,25 +7,27 @@ import './style/Navbar.css'
 
 export default function Navbar ({admin, setAdmin, loggedIn, setLoggedIn, token, setToken, user, setUser}) {
     const navigate = useNavigate()
+    const ADMIN_1 = process.env.REACT_APP_ADMIN_1;
+    const ADMIN_2 = process.env.REACT_APP_ADMIN_2;
 
     // google login callback 
     const handleCallbackResponse = (response) => {
-            API.postToken(response.credential);
-            let UserObj = JWT_decode(response.credential);
-            setUser(UserObj);
-            setToken(response.credential);
-            setLoggedIn(true)
-            if (UserObj.email === "kristenk2017@gmail.com") {
-                setAdmin(true)
-                localStorage.setItem("admin", true)
-            } else {
-                setAdmin(false)
-                localStorage.setItem("admin", false)
-            }
-            localStorage.setItem("token", JSON.stringify(response.credential))
-            localStorage.setItem("user", JSON.stringify(UserObj))
-            localStorage.setItem("loggedIn", true)
-            window.location.reload()
+        let UserObj = JWT_decode(response.credential);
+        API.postToken(response.credential)
+        setUser(UserObj);
+        setToken(response.credential);
+        setLoggedIn(true)
+        if (UserObj.email === ADMIN_1 || ADMIN_2) {
+            setAdmin(true)
+            localStorage.setItem("admin", true)
+        } else {
+            setAdmin(false)
+            localStorage.setItem("admin", false)
+        }
+        localStorage.setItem("token", JSON.stringify(response.credential))
+        localStorage.setItem("user", JSON.stringify(UserObj))
+        localStorage.setItem("loggedIn", true)
+        window.location.reload()
 
     }
 
@@ -40,7 +42,7 @@ export default function Navbar ({admin, setAdmin, loggedIn, setLoggedIn, token, 
         
         google.accounts.id.renderButton(
             document.getElementById(`sign-in-div`),
-            {size: 'large', shape: 'pill'}
+            {shape: 'pill'}
         );
     },[])
 
@@ -53,7 +55,6 @@ export default function Navbar ({admin, setAdmin, loggedIn, setLoggedIn, token, 
         localStorage.setItem("loggedIn", false)
         setAdmin(false);
         localStorage.setItem("admin", false)
-        window.location.reload()
     }
 
     return (

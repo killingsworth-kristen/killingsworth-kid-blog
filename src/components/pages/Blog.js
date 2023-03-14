@@ -7,7 +7,7 @@ import Footer from './../Footer.js'
 
 import './../style/Blog.css'
 
-export default function Blog ({admin, handleNewPost, handleEditPost, loggedIn, user}) {
+export default function Blog ({admin, handleNewPost, loggedIn, user, postMode, setPostMode}) {
     // state
     const [posts, setPosts] = useState([])
 
@@ -32,9 +32,10 @@ export default function Blog ({admin, handleNewPost, handleEditPost, loggedIn, u
                 return (<BlogCard key={post.id} 
                     postObj={post}
                     admin={admin} 
-                    handleEditPost={handleEditPost}
                     loggedIn={loggedIn}
-                    user={user}/>)
+                    user={user}
+                    postMode={postMode}
+                    setPostMode={setPostMode}/>)
             })}
             </div>
             <Footer />

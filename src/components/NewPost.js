@@ -1,11 +1,11 @@
-import React, { useEffect, useState} from 'react';
+import React, { useState} from 'react';
 import CloudinaryWidget from "./CloudinaryWidget";
 
 import API from './../utils/API.js'
 
 import './style/NewPost.css'
 
-export default function NewPost ({postMode, setPostMode, openModal, setOpenModal}) {
+export default function NewPost ({openModal, setOpenModal}) {
 
     const [postTitle, setPostTitle] = useState("");
     const [postImg, setPostImg ] = useState("");
@@ -26,7 +26,6 @@ export default function NewPost ({postMode, setPostMode, openModal, setOpenModal
     }
 
     const handleNewPostSubmit = async (e) => {
-        e.preventDefault();
         const currentUser = JSON.parse(localStorage.user).sub
         console.log(currentUser)
         let postObj = {
@@ -46,11 +45,11 @@ export default function NewPost ({postMode, setPostMode, openModal, setOpenModal
         <>
         <section className={openModal === true ? 'new-post-modal' : 'new-post-modal hidden'}>
             <div className='modal-header'>
-                <h2 className='modal-title'>{postMode} Post</h2>
+                <h2 className='modal-title'>Create Post</h2>
                 <p className='modal-close' onClick={() => {setOpenModal(false)}}>X</p>
             </div>
             <div className='new-post-img-container'>
-                <img className="new-post-img" src={postImg} />
+                <img className="new-post-img" src={postImg} alt=''/>
             </div>
             <CloudinaryWidget setPostImg={setPostImg}/>
             <form className='new-post-form'>

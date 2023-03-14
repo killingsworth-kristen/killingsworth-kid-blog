@@ -9,8 +9,12 @@ import Home from './components/pages/Home';
 import Poll from './components/pages/Poll';
 import Blog from './components/pages/Blog';
 import NewPost from './components/NewPost';
+import EditPost from './components/EditPost';
 
 function App() {
+  const ADMIN_1 = process.env.REACT_APP_ADMIN_1;
+  const ADMIN_2 = process.env.REACT_APP_ADMIN_2;
+
   const [loggedIn, setLoggedIn] = useState(false);
   const [admin, setAdmin] = useState(false);
   const [postMode, setPostMode] = useState('Create');
@@ -29,7 +33,7 @@ function App() {
     
     if (storedUser === null) {
       return;
-    } else if (storedUser.email === "kristenk2017@gmail.com") {
+    } else if (storedUser.email === ADMIN_1 || ADMIN_2) {
       setUser(storedUser)
       localStorage.setItem("admin", true)
       setAdmin(true)
@@ -49,12 +53,7 @@ function App() {
   },[])
 
   const handleNewPost = () => {
-    setPostMode('Create');
-    setOpenModal(true);
-  }
-
-  const handleEditPost = () => {
-    setPostMode("Edit");
+    setPostMode('add');
     setOpenModal(true);
   }
 
@@ -64,15 +63,17 @@ function App() {
         <header>
             <Navbar admin={admin} setAdmin={setAdmin} loggedIn={loggedIn} setLoggedIn={setLoggedIn} user={user} setUser={setUser} token={token} setToken={setToken}/>
         </header>
-        <NewPost postMode={postMode} setPostMode={setPostMode} openModal={openModal} setOpenModal={setOpenModal}/>
+        <NewPost openModal={openModal} setOpenModal={setOpenModal}/>
+        <EditPost postMode={postMode} setPostMode={setPostMode} user={user}/>
         <Routes>
           <Route path={'/'} element={<Home />} />
           <Route path={'/poll'} element={<Poll />} />
           <Route path={'/blog'} element={<Blog 
             admin={admin} 
             setAdmin={setAdmin} 
-            handleEditPost={handleEditPost} 
             handleNewPost={handleNewPost}
+            setPostMode={setPostMode}
+            postMode={postMode}
             loggedIn={loggedIn}
             user={user}/>} />
         </Routes>

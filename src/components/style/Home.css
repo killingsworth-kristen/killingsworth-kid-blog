@@ -7,7 +7,7 @@
 
 .baby-h1 {
     font-family: 'Great Vibes';
-    font-size: 15vh;
+    font-size: 100px;
     margin-top: 3%;
 }
 
@@ -32,4 +32,14 @@
     text-align: center;
     width: 100vw;
     font-size: 4vh;
+}
+
+@media (max-width: 500px) {
+    .home-images {
+        height: 200px;
+    }  
+
+    .baby-h1 {
+        font-size: 50px;
+    }
 }

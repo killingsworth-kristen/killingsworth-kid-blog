@@ -6,6 +6,10 @@
     border-radius: 15px;
 }
 
+.blog-content {
+    background-color: white;
+}
+
 .blog-title {
     background-color: white;
 }
@@ -23,6 +27,7 @@
 .blog-date {
     background-color: white;
 }
+
 
 /* buttons */
 .buttons-container {
@@ -68,16 +73,17 @@
 .comments-container {
     display: grid;
     align-content: end;
-    justify-content: end;
+    justify-content: start;
+    margin-left: 8vw;
 }
 
+/* admin buttons */
 .admin-btn-container {
     background-color: white;
     display: flex;
     justify-content: end;
 }
 
-/* admin buttons */
 .admin-btn {
     margin: .5rem;
     border-radius: 20px;
@@ -96,10 +102,26 @@
     background-color: rgb(247, 78, 78);
 }
 
+/* utils */
 .red {
     background-color: rgb(247, 78, 78);
 }
 
+.white {
+    background-color: white;
+}
+
 .hidden {
     display: none;
+}
+
+@media (max-width: 500px) {
+    .blog-card {
+        padding: 5vw;
+    }
+
+    .blog-picture {
+        width: 200px;
+        height: auto;
+    }
 }

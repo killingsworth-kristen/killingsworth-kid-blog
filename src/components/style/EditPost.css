@@ -1,0 +1,76 @@
+.hidden {
+    display: none;
+}
+
+.edit-post-modal {
+    margin: 25vh 25vw;
+}
+
+.blog-content-edit {
+    background-color: white;
+    padding: 1rem;
+    display: flex;
+    position: fixed;
+    width: fit-content;
+    height: fit-content;
+    border: 2px solid gray;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.edit-post-header {
+    padding: .5rem;
+    background-color: white;
+}
+
+.edit-blog-picture {
+    width: 200px;
+    height: auto;
+}
+
+.edit-post-form {
+    background-color: rgb(219, 219, 219);
+    margin: 0 0 0 5vw;
+    width: 50vw;
+    padding: 1rem;
+    border-radius: 20px;
+}
+
+.edit-post-title {
+    background-color: white;
+    width: 40vw;
+    padding: .5rem;
+    border: 1px solid gray;
+    border-radius: 15px;
+}
+
+.edit-post-body {
+    margin-top: .5rem;
+    background-color: white;
+    width: 45vw;
+    padding: .5rem;
+    border: 1px solid gray;
+    border-radius: 15px;
+}
+
+.edit-submit-post-btn {
+    margin: 1rem;
+    padding: .5rem;
+    background-color: gray;
+    border: none;
+    border-radius: 15px;
+    justify-content: flex-start;
+}
+
+.edit-submit-post-btn:hover {
+    background-color: rgb(128, 206, 128);
+}
+
+.cancel-edit-post-btn {
+    padding: .5rem;
+    margin: .5rem;
+    height: fit-content;
+    background-color: rgb(247, 78, 78);
+    border: none;
+    border-radius: 20px;
+}

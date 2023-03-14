@@ -14,7 +14,7 @@ label {
     background-color: white;
     width: 50vw;
     height: auto;
-    position: absolute;
+    position: fixed;
     top: 25%;
     left: 25%;
     overflow: hidden;
@@ -82,7 +82,6 @@ label {
 }
 
 #submit-post-btn {
-    background-color: inherit;
     margin: 1rem 45% 0 45%;
     padding: .5rem;
     background-color: gray;

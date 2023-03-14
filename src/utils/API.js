@@ -4,6 +4,7 @@ const URL_PREFIX = "http://localhost:3001"
 // const URL_PREFIX= "deployed API url"
 
 const API = {
+    // token call
     postToken: (token) => {
         // get user from token
         return fetch(`${URL_PREFIX}/users/token`, {
@@ -12,18 +13,12 @@ const API = {
             headers: {
                 "Content-Type": "application/json"
             }
-        }).then(res => res.json());
+        }).then((res) => {
+            console.log(res);
+            res.json()});
     },
 
-    getUserFromToken: () => {
-        return fetch(`${URL_PREFIX}/users/token`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(res => res.json());
-    },
-
+    // Like calls
     getAllLikes: () =>{
         // get all likes
         return fetch(`${URL_PREFIX}/likes`, {
@@ -66,6 +61,15 @@ const API = {
         }).then(res => res.json())
     },
 
+    getOnePost: (postId) => {
+        // get all posts
+        return fetch(`${URL_PREFIX}/posts/${postId}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res => res.json())
+    },
     newPost: (postObj) => {
         // post/create new post
         console.log(postObj)
@@ -77,32 +81,25 @@ const API = {
             }
         }).then(res => res.json())
     },
-
-    updatePost: (currentPost, currentUser, currentBody, currentTitle, currentImg) => {
+    updatePost: (editPostObj, currentPost) => {
         // put/update post
-        // return fetch(`${URL_PREFIX}/posts/${currentPost}`, {
-        //     method: "PUT",
-        //     body: {
-        //         "title":`${currentTitle}`,
-        //         "body":`${currentBody}`,
-        //         "image":`${currentImg}`,
-        //         "UsersId":`${currentUser}`
-        //     },
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //     }
-        // }).then(res => res.json())
+        return fetch(`${URL_PREFIX}/posts/${currentPost}`, {
+            method: "PUT",
+            body: JSON.stringify(editPostObj),
+            headers: {
+                "Content-Type": "application/json",
+            }
+        }).then(res => res.json())
     },
 
-    deletePost: () => {
+    deletePost: (currentPost) => {
         // delete post
-        // return fetch(`${URL_PREFIX}/posts/${currentPost}`, {
-        //     method: "DELETE",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //         "authorization": `Bearer ${token}`
-        //     }
-        // }).then(res => res.json())
+        return fetch(`${URL_PREFIX}/posts/${currentPost}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            }
+        }).then(res => res.json())
     },
 
     // comment API calls

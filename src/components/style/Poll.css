@@ -25,3 +25,10 @@
     width: 50vw;
     height: 40vh;
 }
+
+@media (max-width: 500px) {
+    .iframe {
+        width: 85vw;
+        height: 60vh;
+    }
+}

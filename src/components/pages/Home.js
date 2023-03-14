@@ -18,10 +18,11 @@ export default function Home () {
                 <div className='home-registries'>
                     <h3>Registries coming soon!</h3>
                 </div>
+                <footer>
+                    <Footer />
+                </footer>
             </section>
-            <footer>
-                <Footer />
-            </footer>
+
         </>
     )
 }

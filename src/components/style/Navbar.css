@@ -48,4 +48,15 @@ a:hover {
     background: none;
 }
 
+@media (max-width: 500px) {
+    nav {
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    a, .logout-btn {
+        font-size: 30px;
+    }
+}
+
 

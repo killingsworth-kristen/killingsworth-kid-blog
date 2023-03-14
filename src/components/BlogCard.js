@@ -4,8 +4,9 @@ import './style/BlogCard.css'
 import API from './../utils/API.js'
 import Comment from "./Comment"
 import NewComment from "./NewComment.js"
+// import EditPost from "./EditPost.js"
 
-export default function BlogCard ({admin, handleEditPost, postObj, loggedIn, user}) {
+export default function BlogCard ({admin, postObj, loggedIn, user, postMode, setPostMode}) {
     // declared variables
     let numLikes = postObj.Likes.length
     let numComments = postObj.Comments.length
@@ -18,7 +19,7 @@ export default function BlogCard ({admin, handleEditPost, postObj, loggedIn, use
     const [comments, setComments] = useState(postObj.Comments);
     const [showNewComment, setShowNewComments] = useState(false);
     const [newComment, setNewComment] = useState("ADD COMMENT");
-    // const [showCommentBtns, setShowCommentButtons] = useState(false);
+
 
     useEffect( () => {
         if (loggedIn === false) {
@@ -121,15 +122,26 @@ export default function BlogCard ({admin, handleEditPost, postObj, loggedIn, use
         }
     }
 
+    const handleEditPostMode = (e) => {
+        setPostMode('Edit')
+        console.log(e.target.parentNode.classList)
+        localStorage.setItem('edit',e.target.parentNode.classList)
+    }
 
+    const handleDeletePost = () => {
+        API.deletePost(postObj.id)
+        window.location.reload()
+    }
 
     return (
         <>
         <div className="blog-card" id={postObj.id}>
-            <h2 className='blog-title'>{postObj.title}</h2>
-            <img className='blog-picture' src={postObj.image} />
-            <p className='blog-text'>{postObj.body}</p>
-            <p className='blog-date'>{postObj.date}</p>
+            <div className="blog-content">
+                <h2 className='blog-title'>{postObj.title}</h2>
+                <img className='blog-picture' src={postObj.image} />
+                <p className='blog-text'>{postObj.body}</p>
+                <p className='blog-date'>{postObj.date}</p>
+            </div>
             <div className="buttons-container">
                 <p className="num-comments">{LikesCount}</p>
                 <button className={liked === true ? "like-btn unfilled-heart hidden" : "like-btn unfilled-heart"} onClick={handleLike}>
@@ -144,11 +156,11 @@ export default function BlogCard ({admin, handleEditPost, postObj, loggedIn, use
                 </button>
             </div>
             <div className="admin-btn-container">
-                <button className={admin === true ? "admin-btn" : "admin-btn hidden"} onClick={handleEditPost}>
+                <button className={admin === true ? `admin-btn blogCard${postObj.id}` : `admin-btn blogCard${postObj.id} hidden`} onClick={handleEditPostMode}>
                     <h4 className="edit-post-btn">EDIT POST</h4>
                 </button>
                 <button className={admin === true ? "admin-btn" : "admin-btn hidden"}>
-                    <h4 className="delete-post-btn">DELETE POST</h4>
+                    <h4 className="delete-post-btn" onClick={handleDeletePost}>DELETE POST</h4>
                 </button>
             </div>
         </div>

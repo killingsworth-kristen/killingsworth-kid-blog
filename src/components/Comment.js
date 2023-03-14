@@ -16,15 +16,11 @@ export default function Comment ({username, body, user, loggedIn, commentOwner, 
             setShowCommentButtons(false);
             return;
         } else if (user.sub === commentOwner) {
-            console.log(`commentOwner === user.sub`)
-            console.log(commentObj.id, commentOwner, user.sub)
             setShowCommentButtons(true);
             return;
         } else if (admin === true) {
             setShowCommentButtons(true);
         } else {
-            console.log(`commentOwner !== user.sub`)
-            console.log(commentObj.id, commentOwner, user.sub)
             setShowCommentButtons(false);
             return;
         }
