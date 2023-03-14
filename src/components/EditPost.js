@@ -15,7 +15,8 @@ export default function EditPost ({postMode, setPostMode, user}) {
 
     useEffect(()=>{
         const editTarget = localStorage.getItem('edit')
-        if (editTarget === '' || null) {
+        console.log(editTarget)
+        if (editTarget === '' || null || "null") {
             return;
         } else {
             const blogCardNum = editTarget.split(' ')[1]
