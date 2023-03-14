@@ -63,7 +63,7 @@ export default function BlogCard ({admin, postObj, loggedIn, user, postMode, set
         //         return;
         //     }
         // })  
-    },[])
+    },[loggedIn])
     
 
     // functions
