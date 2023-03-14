@@ -1,18 +1,19 @@
 nav {
-    text-align: end;
+    text-align: flex-end;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     padding-bottom: 2vh;
 }
 
-a {
+.nav-button {
     font-size: 35px;
     padding: 1%;
     color: slategray;
     background: none;
+    border: none;
 }
 
-a:hover {
+.nav-button:hover {
     color: black;
     background-color: white;
 }
@@ -54,7 +55,7 @@ a:hover {
         flex-wrap: wrap;
     }
 
-    a, .logout-btn {
+    .nav-button, .logout-btn {
         font-size: 30px;
     }
 }

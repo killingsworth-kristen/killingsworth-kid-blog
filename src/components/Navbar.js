@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import JWT_decode from 'jwt-decode'
 import API from './../utils/API'
 import { useNavigate } from 'react-router-dom';
 import './style/Navbar.css'
 
 
-export default function Navbar ({admin, setAdmin, loggedIn, setLoggedIn, token, setToken, user, setUser}) {
+export default function Navbar ({setAdmin, loggedIn, setLoggedIn, setToken, setUser}) {
     const navigate = useNavigate()
-    const ADMIN_1 = process.env.REACT_APP_ADMIN_1;
-    const ADMIN_2 = process.env.REACT_APP_ADMIN_2;
 
     // google login callback 
     const handleCallbackResponse = (response) => {
@@ -17,7 +15,7 @@ export default function Navbar ({admin, setAdmin, loggedIn, setLoggedIn, token, 
         setUser(UserObj);
         setToken(response.credential);
         setLoggedIn(true)
-        if (UserObj.email === ADMIN_1 || ADMIN_2) {
+        if (UserObj.email === "kristenk2017@gmail.com" || "katiekillingsworth522@gmail.com") {
             setAdmin(true)
             localStorage.setItem("admin", true)
             console.log(`catching in navbar 23`)
@@ -39,7 +37,7 @@ export default function Navbar ({admin, setAdmin, loggedIn, setLoggedIn, token, 
     useEffect(() => {
         /* global google */
         google.accounts.id.initialize({
-            client_id: process.env.REACT_APP_OAUTH_ID,
+            client_id: "594289202000-pscqp621enkhgqd5cnlv36nosvthe37a.apps.googleusercontent.com",
             auto_selecct: true,
             callback: handleCallbackResponse,
             });
@@ -48,6 +46,7 @@ export default function Navbar ({admin, setAdmin, loggedIn, setLoggedIn, token, 
             document.getElementById(`sign-in-div`),
             {shape: 'pill'}
         );
+
     },[])
 
     // google logout
@@ -70,18 +69,11 @@ export default function Navbar ({admin, setAdmin, loggedIn, setLoggedIn, token, 
     return (
         <>
             <nav>
-                <a onClick={()=> navigate('/')}>Home</a>
-                <a onClick={()=> navigate('/poll')}>Poll</a>
-                <a onClick={()=> navigate('/blog')}>Blog</a>
-                {/* <a onClick={()=> navigate('/profile')}>Profile</a> */}
+                <button className="nav-button" onClick={()=> navigate('/')}>Home</button>
+                <button className="nav-button" onClick={()=> navigate('/poll')}>Poll</button>
+                <button className="nav-button" onClick={()=> navigate('/blog')}>Blog</button>
                 <div className={loggedIn ? "google-btn hidden" : "google-btn"} id="sign-in-div"></div>
                 <button className={loggedIn ? "logout-btn" : "logout-btn hidden"} onClick={handleLogout}>Logout</button>
-                {/* <div id="g_id_onload"
-                    data-client_id={process.env.REACT_APP_OAUTH_ID}
-                    data-auto_select="true"
-                    data-login_uri="http://localhost:3000">
-                </div>
-                <button className="logout-btn g_id_signout">Logout</button> */}
             </nav>
         </>
 
