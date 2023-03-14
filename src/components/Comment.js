@@ -32,7 +32,7 @@ export default function Comment ({username, body, user, loggedIn, commentOwner, 
             alert(`You must be logged in to edit/delete a comment`)
             return;
         } else if (e.target.classList.value.includes(`commentOwner-${commentOwner}`)) {
-            if (commentOwner === user.sub) {
+            if (commentOwner === user.sub || admin) {
                 setEditComment(true)
             } else {
                 alert(`You are not the owner of this comment!`)
@@ -48,7 +48,7 @@ export default function Comment ({username, body, user, loggedIn, commentOwner, 
             alert(`You must be logged in to edit/delete a comment`)
             return;
         } else if (e.target.classList.value.includes(`commentOwner-${commentOwner}`)) {
-            if (commentOwner === user.sub) {
+            if (commentOwner === user.sub || admin) {
                 API.deleteComment(commentObj.id)
                 window.location.reload()
             } else {

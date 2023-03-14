@@ -12,12 +12,10 @@ import NewPost from './components/NewPost';
 import EditPost from './components/EditPost';
 
 function App() {
-  const ADMIN_1 = process.env.REACT_APP_ADMIN_1;
-  const ADMIN_2 = process.env.REACT_APP_ADMIN_2;
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [admin, setAdmin] = useState(false);
-  const [postMode, setPostMode] = useState('Create');
+  const [postMode, setPostMode] = useState('Add');
   const [openModal, setOpenModal] = useState(false);
   const [user, setUser] = useState({});
   const [token, setToken] = useState("");
@@ -26,25 +24,42 @@ function App() {
     let storedUser;
     if (localStorage.getItem('user') === "" ) {
       storedUser = localStorage.getItem('user')
-      
+      setAdmin(false)
+      setLoggedIn(false)
+      setUser({})
+      setToken("")
     } else {
       storedUser = JSON.parse(localStorage.getItem('user'))
     }
-    
-    if (storedUser === null) {
+    if (storedUser === null || "" ) {
+      setAdmin(false)
+      setLoggedIn(false)
+      setUser({})
+      setToken("")
       return;
-    } else if (storedUser.email === ADMIN_1 || ADMIN_2) {
+    }else if (!storedUser) {
+      setAdmin(false)
+      setLoggedIn(false)
+      setUser({})
+      setToken("")
+      return;
+    } else if (storedUser.email === "kristenk2017@gmail.com" || "katiekillingsworth522@gmail.com") {
+      console.log(storedUser.email)
       setUser(storedUser)
       localStorage.setItem("admin", true)
+      console.log(`catching in app 45`)
       setAdmin(true)
       localStorage.setItem("loggedIn", true)
+      console.log(`catching in app 48`)
       setLoggedIn(true)
       setToken(localStorage.token)
     } else if (storedUser) {
       setUser(storedUser)
       localStorage.setItem("admin", false)
+      console.log(`catching in app 54`)
       setAdmin(false)
       localStorage.setItem("loggedIn", true)
+      console.log(`catching in app 57`)
       setLoggedIn(true)
       setToken(localStorage.token)
     } else {

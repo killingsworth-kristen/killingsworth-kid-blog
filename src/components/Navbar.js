@@ -20,13 +20,17 @@ export default function Navbar ({admin, setAdmin, loggedIn, setLoggedIn, token, 
         if (UserObj.email === ADMIN_1 || ADMIN_2) {
             setAdmin(true)
             localStorage.setItem("admin", true)
+            console.log(`catching in navbar 23`)
         } else {
             setAdmin(false)
             localStorage.setItem("admin", false)
+            console.log(`catching in navbar 27`)
+
         }
         localStorage.setItem("token", JSON.stringify(response.credential))
         localStorage.setItem("user", JSON.stringify(UserObj))
         localStorage.setItem("loggedIn", true)
+        console.log(`catching in navbar 33`)
         window.location.reload()
 
     }
@@ -50,11 +54,17 @@ export default function Navbar ({admin, setAdmin, loggedIn, setLoggedIn, token, 
     const handleLogout = (e) => {
         e.preventDefault();
         setUser({});
-        localStorage.setItem("user", "")
+        localStorage.setItem("user", "");
+        console.log(`catching in navbar 57`)
         setLoggedIn(false);
-        localStorage.setItem("loggedIn", false)
+        localStorage.setItem("loggedIn", false);
+        console.log(`catching in navbar 60`)
         setAdmin(false);
-        localStorage.setItem("admin", false)
+        localStorage.setItem("admin", false);
+        console.log(`catching in navbar 63`)
+        setToken("");
+        localStorage.setItem('token', "");
+        console.log(`catching in navbar 66`)
     }
 
     return (

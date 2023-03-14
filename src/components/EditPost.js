@@ -15,15 +15,19 @@ export default function EditPost ({postMode, setPostMode, user}) {
 
     useEffect(()=>{
         const editTarget = localStorage.getItem('edit')
-        const blogCardNum = editTarget.split(' ')[1]
-        const postId = blogCardNum.split('blogCard')[1]
-
-        API.getOnePost(postId).then((res)=>{
-            setPostObj(res);
-            setPostBody(res.body);
-            setPostImg(res.image);
-            setPostTitle(res.title);
-        })
+        if (editTarget === '') {
+            return;
+        } else {
+            const blogCardNum = editTarget.split(' ')[1]
+            const postId = blogCardNum.split('blogCard')[1]
+    
+            API.getOnePost(postId).then((res)=>{
+                setPostObj(res);
+                setPostBody(res.body);
+                setPostImg(res.image);
+                setPostTitle(res.title);
+            })
+        }
     },[localStorage.getItem('edit')])
 
     // functions
