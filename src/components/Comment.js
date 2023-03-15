@@ -7,7 +7,7 @@ import './style/Comment.css'
 export default function Comment ({username, body, user, loggedIn, commentOwner, commentObj, admin}) {
     // state
     const [editComment, setEditComment] = useState(false);
-    const [commentBody, setCommentBody] = useState("");
+    const [commentBody, setCommentBody] = useState(body);
     const [showCommentBtns, setShowCommentButtons] = useState(false);
 
 
@@ -33,6 +33,7 @@ export default function Comment ({username, body, user, loggedIn, commentOwner, 
             return;
         } else if (e.target.classList.value.includes(`commentOwner-${commentOwner}`)) {
             if (commentOwner === user.sub || admin) {
+                console.log(body)
                 setEditComment(true)
             } else {
                 alert(`You are not the owner of this comment!`)
@@ -83,7 +84,7 @@ export default function Comment ({username, body, user, loggedIn, commentOwner, 
         <div className='comment-card-container'>
             <form className={editComment === false ? 'new-comment-form hidden' : 'new-comment-form'}> 
                 <button className='cancel-edit-btn' onClick={handleEditCancel}>CANCEL</button>
-                <input type="text" className="comment-body" name="comment-body" onChange={handleInputChange}></input><br/>
+                <input type="text" className="comment-body" name="comment-body" value={commentBody} onChange={handleInputChange}></input><br/>
                 <button className='submit-comment-btn' onClick={handleSubmitNewComment}>Submit</button>
             </form>
             <div className={editComment === false ? "comment-card" : "comment-card hidden"}>
