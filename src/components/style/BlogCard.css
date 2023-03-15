@@ -44,6 +44,7 @@
 
 .heart-img, .comments-img {
     background-color: white;
+    width: 28px;
 }
 
 /* comments */
