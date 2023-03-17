@@ -15,12 +15,14 @@ export default function EditPost ({postMode, setPostMode, user}) {
 
     useEffect(()=>{
         const editTarget = localStorage.getItem('edit')
-        if (editTarget === '' || null || "null") {
+        if (editTarget === '' || 'null') {
+            console.log(`editTarget === null`)
             return;
         } else {
             const blogCardNum = editTarget.split(' ')[1]
+            console.log(blogCardNum)
             const postId = blogCardNum.split('blogCard')[1]
-    
+            console.log(postId)
             API.getOnePost(postId).then((res)=>{
                 setPostObj(res);
                 setPostBody(res.body);
@@ -28,7 +30,7 @@ export default function EditPost ({postMode, setPostMode, user}) {
                 setPostTitle(res.title);
             })
         }
-    },[localStorage.getItem('edit')])
+    },[])
 
     // functions
     const handleInputChange = (e) => {

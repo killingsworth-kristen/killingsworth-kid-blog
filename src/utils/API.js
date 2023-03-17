@@ -95,6 +95,7 @@ const API = {
 
     deletePost: (currentPost) => {
         // delete post
+        console.log(currentPost)
         return fetch(`${URL_PREFIX}/posts/${currentPost}`, {
             method: "DELETE",
             headers: {
