@@ -47,7 +47,7 @@ const API = {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
-            }
+            },
         }).then(res => res.json());
     },
 
@@ -59,7 +59,6 @@ const API = {
             headers: {
                 "Content-Type": "application/json"
             },
-            mode: 'cors'
         }).then(res => res.json())
     },
 
@@ -80,7 +79,7 @@ const API = {
             body: JSON.stringify(postObj),
             headers: {
                 "Content-Type": "application/json"
-            }
+            },
         }).then(res => res.json())
     },
     updatePost: (editPostObj, currentPost) => {

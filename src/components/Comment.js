@@ -51,6 +51,7 @@ export default function Comment ({username, body, user, loggedIn, commentOwner, 
         } else if (e.target.classList.value.includes(`commentOwner-${commentOwner}`)) {
             if (commentOwner === user.sub || admin) {
                 API.deleteComment(commentObj.id)
+                console.log(`API delete comment`)
                 window.location.reload()
             } else {
                 alert(`You are not the owner of this comment!`)
@@ -71,6 +72,7 @@ export default function Comment ({username, body, user, loggedIn, commentOwner, 
         const editCommentObj = {body: commentBody, PostsId: commentObj.PostsId, UsersId: user.sub}
         const commentId = commentObj.id
         API.updateComment(editCommentObj, commentId)
+        console.log(`API edit comment`)
         setEditComment(false)
     }
 

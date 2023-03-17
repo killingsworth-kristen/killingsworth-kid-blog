@@ -16,7 +16,8 @@ export default function NewComment ({user, PostsId}) {
     const handleSubmitNewComment = (e) => {
         // e.preventDefault();
         const commentObj = {body: commentBody, PostsId: PostsId, UsersId: user.sub}
-        API.newComment(commentObj)
+        API.newComment(commentObj).then(res=>console.log(res))
+        console.log(`API new comment`)
     }
 
     return (
