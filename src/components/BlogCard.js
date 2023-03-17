@@ -89,12 +89,22 @@ export default function BlogCard ({admin, postObj, loggedIn, user, postMode, set
 
     const handleUnlike = (e) => {
         const likeId = localStorage.getItem(`likeId${postObj.id}`)
-        API.unlike(likeId)
-        setLiked(false);
-        localStorage.setItem(`likedPost${postObj.id}`, false)
-        localStorage.setItem(`likeId${postObj.id}`, null)
-        setLikesCount(LikesCount - 1)
-        numLikes = numLikes - 1;
+        if (likeId === 'null') {
+            setLiked(false);
+            localStorage.setItem(`likedPost${postObj.id}`, false)
+            localStorage.removeItem(`likeId${postObj.id}`)
+            setLikesCount(LikesCount - 1)
+            numLikes = numLikes - 1;
+        } else if (likeId) {
+            API.unlike(likeId).then((res) => {
+                setLiked(false);
+                localStorage.setItem(`likedPost${postObj.id}`, false)
+                localStorage.removeItem(`likeId${postObj.id}`)
+                setLikesCount(LikesCount - 1)
+                numLikes = numLikes - 1;            
+            })
+        }
+
     }
 
     const handleShowComments = (e) => {
@@ -125,7 +135,7 @@ export default function BlogCard ({admin, postObj, loggedIn, user, postMode, set
     const handleEditPostMode = (e) => {
         setPostMode('Edit')
         console.log(e.target.parentNode.classList)
-        localStorage.setItem('edit',e.target.parentNode.classList)
+        localStorage.setItem('edit', e.target.parentNode.classList)
     }
 
     const handleDeletePost = () => {
