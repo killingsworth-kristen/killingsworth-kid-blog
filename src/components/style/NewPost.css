@@ -7,13 +7,12 @@
 } */
 label {
     background-color: inherit;
-    font-size: 3vh;
+    font-size: 25px;
 }
 
 .new-post-modal {
     background-color: white;
     width: 50vw;
-    height: 70vh;
     position: fixed;
     top: 10%;
     left: 25%;
@@ -37,7 +36,7 @@ label {
 
 .modal-close {
     background-color: inherit;
-    font-size: 5vh;
+    font-size: 20px;
     margin: auto 0;
     padding: 1rem;
 }
@@ -49,7 +48,6 @@ label {
 .new-post-form {
     background-color: inherit;
     margin: 1vw;
-    height: 30vh;
     display: flex;
     flex-wrap: wrap;
 }
@@ -72,6 +70,7 @@ label {
     border-radius: 5px;
     font-size: 30px;
     flex: 1 1 90%;
+    justify-content: stretch;
 }
 
 #post-body {
@@ -80,6 +79,9 @@ label {
     padding: .5rem;
     flex: 1 1 95%;
     border-radius: 10px;
+    max-height: 30vh;
+    min-height: 1vh;
+    justify-self: stretch;
 }
 
 #submit-post-btn {
