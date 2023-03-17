@@ -12,8 +12,7 @@ const API = {
             body: JSON.stringify({token: `${token}`}),
             headers: {
                 "Content-Type": "application/json"
-            },
-            mode: "cors"
+            }
         }).then((res) => {
             console.log(res);
             res.json()});
@@ -26,8 +25,7 @@ const API = {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
-            },
-            mode: "cors"
+            }
         }).then(res => res.json());
     },
 
@@ -38,8 +36,7 @@ const API = {
             body: JSON.stringify(likeObj),
             headers: {
                 "Content-Type": "application/json"
-            },
-            mode: "cors"
+            }
         }).then(res => res.json());
     },
 
@@ -50,7 +47,6 @@ const API = {
             headers: {
                 "Content-Type": "application/json"
             },
-            mode: "cors"
         }).then(res => res.json());
     },
 
@@ -71,8 +67,7 @@ const API = {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
-            },
-            mode: "cors"
+            }
         }).then(res => res.json())
     },
     newPost: (postObj) => {
@@ -84,7 +79,6 @@ const API = {
             headers: {
                 "Content-Type": "application/json"
             },
-            mode: "cors"
         }).then(res => res.json())
     },
     updatePost: (editPostObj, currentPost) => {
@@ -94,8 +88,7 @@ const API = {
             body: JSON.stringify(editPostObj),
             headers: {
                 "Content-Type": "application/json",
-            },
-            mode: "cors"
+            }
         }).then(res => res.json())
     },
 
@@ -105,8 +98,7 @@ const API = {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
-            },
-            mode: "cors"
+            }
         }).then(res => res.json())
     },
 
@@ -118,8 +110,7 @@ const API = {
             body: JSON.stringify(commentObj),
             headers: {
                 "Content-Type": "application/json",
-            },
-            mode: "cors"
+            }
         }).then(res => res.json());
     },
 
@@ -130,8 +121,7 @@ const API = {
             body: JSON.stringify(editCommentObj),
             headers: {
                 "Content-Type": "application/json",
-            },
-            mode: "cors"
+            }
         }).then(res => res.json());
     },
     
@@ -141,8 +131,7 @@ const API = {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
-            },
-            mode: "cors"
+            }
         }).then(res => res.json());
     }
 
