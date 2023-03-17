@@ -1,7 +1,8 @@
 // in dev mode
 // const URL_PREFIX = "http://localhost:3001"
+
 // in prod mode
-const URL_PREFIX= "https://killingsworth-kid-backend.herokuapp.com"
+const URL_PREFIX= "https://killingsworth-kid-backend-2egfgsl7ea-uc.a.run.app"
 
 const API = {
     // token call
@@ -57,7 +58,8 @@ const API = {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
-            }
+            },
+            mode: 'cors'
         }).then(res => res.json())
     },
 
