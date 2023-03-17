@@ -44,7 +44,7 @@ export default function Navbar ({setAdmin, loggedIn, setLoggedIn, setToken, setU
         
         google.accounts.id.renderButton(
             document.getElementById(`sign-in-div`),
-            {shape: 'pill'}
+            {shape: 'pill', theme: 'filled_white'}
         );
 
     },[])

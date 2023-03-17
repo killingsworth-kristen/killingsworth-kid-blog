@@ -1,7 +1,7 @@
 // in dev mode
-// const URL_PREFIX = "http://localhost:3001"
+const URL_PREFIX = "http://192.168.0.15:3001"
 // in prod mode
-const URL_PREFIX= "https://killingsworth-kid-backend.herokuapp.com"
+// const URL_PREFIX= "https://killingsworth-kid-backend.herokuapp.com"
 
 const API = {
     // token call
@@ -12,7 +12,8 @@ const API = {
             body: JSON.stringify({token: `${token}`}),
             headers: {
                 "Content-Type": "application/json"
-            }
+            },
+            mode: "cors"
         }).then((res) => {
             console.log(res);
             res.json()});
@@ -25,7 +26,8 @@ const API = {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
-            }
+            },
+            mode: "cors"
         }).then(res => res.json());
     },
 
@@ -36,7 +38,8 @@ const API = {
             body: JSON.stringify(likeObj),
             headers: {
                 "Content-Type": "application/json"
-            }
+            },
+            mode: "cors"
         }).then(res => res.json());
     },
 
@@ -46,7 +49,8 @@ const API = {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
-            }
+            },
+            mode: "cors"
         }).then(res => res.json());
     },
 
@@ -57,7 +61,7 @@ const API = {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
-            }
+            },
         }).then(res => res.json())
     },
 
@@ -67,7 +71,8 @@ const API = {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
-            }
+            },
+            mode: "cors"
         }).then(res => res.json())
     },
     newPost: (postObj) => {
@@ -78,7 +83,8 @@ const API = {
             body: JSON.stringify(postObj),
             headers: {
                 "Content-Type": "application/json"
-            }
+            },
+            mode: "cors"
         }).then(res => res.json())
     },
     updatePost: (editPostObj, currentPost) => {
@@ -88,7 +94,8 @@ const API = {
             body: JSON.stringify(editPostObj),
             headers: {
                 "Content-Type": "application/json",
-            }
+            },
+            mode: "cors"
         }).then(res => res.json())
     },
 
@@ -98,7 +105,8 @@ const API = {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
-            }
+            },
+            mode: "cors"
         }).then(res => res.json())
     },
 
@@ -110,7 +118,8 @@ const API = {
             body: JSON.stringify(commentObj),
             headers: {
                 "Content-Type": "application/json",
-            }
+            },
+            mode: "cors"
         }).then(res => res.json());
     },
 
@@ -121,7 +130,8 @@ const API = {
             body: JSON.stringify(editCommentObj),
             headers: {
                 "Content-Type": "application/json",
-            }
+            },
+            mode: "cors"
         }).then(res => res.json());
     },
     
@@ -131,7 +141,8 @@ const API = {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
-            }
+            },
+            mode: "cors"
         }).then(res => res.json());
     }
 

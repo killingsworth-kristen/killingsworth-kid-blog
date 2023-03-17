@@ -15,7 +15,6 @@ export default function EditPost ({postMode, setPostMode, user}) {
 
     useEffect(()=>{
         const editTarget = localStorage.getItem('edit')
-        console.log(editTarget)
         if (editTarget === '' || null || "null") {
             return;
         } else {
