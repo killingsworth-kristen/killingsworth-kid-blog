@@ -39,6 +39,7 @@ export default function Navbar ({setAdmin, loggedIn, setLoggedIn, setToken, setU
         google.accounts.id.initialize({
             client_id: "594289202000-pscqp621enkhgqd5cnlv36nosvthe37a.apps.googleusercontent.com",
             auto_selecct: true,
+            itp_support: true,
             callback: handleCallbackResponse,
             });
         
