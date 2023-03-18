@@ -139,8 +139,10 @@ export default function BlogCard ({admin, postObj, loggedIn, user, postMode, set
     }
 
     const handleDeletePost = () => {
-        API.deletePost(postObj.id)
-        window.location.reload()
+        API.deletePost(postObj.id).then((res)=> {
+            console.log(res)
+            window.location.reload()
+        })
     }
 
     return (
