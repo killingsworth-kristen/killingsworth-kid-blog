@@ -43,8 +43,6 @@ export default function Navbar ({setAdmin, loggedIn, setLoggedIn, setToken, setU
             callback: handleCallbackResponse,
             });
         
-        
-
     },[])
 
     // google logout
