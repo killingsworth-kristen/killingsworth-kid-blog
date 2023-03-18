@@ -38,15 +38,12 @@ export default function Navbar ({setAdmin, loggedIn, setLoggedIn, setToken, setU
         /* global google */
         google.accounts.id.initialize({
             client_id: "594289202000-pscqp621enkhgqd5cnlv36nosvthe37a.apps.googleusercontent.com",
-            auto_selecct: true,
-            itp_support: true,
+            // auto_select: true,
+            // itp_support: 'true',
             callback: handleCallbackResponse,
             });
         
-        google.accounts.id.renderButton(
-            document.getElementById(`sign-in-div`),
-            {shape: 'pill', theme: 'filled_white'}
-        );
+        
 
     },[])
 
@@ -73,7 +70,9 @@ export default function Navbar ({setAdmin, loggedIn, setLoggedIn, setToken, setU
                 <button className="nav-button" onClick={()=> navigate('/')}>Home</button>
                 <button className="nav-button" onClick={()=> navigate('/poll')}>Poll</button>
                 <button className="nav-button" onClick={()=> navigate('/blog')}>Blog</button>
-                <div className={loggedIn ? "google-btn hidden" : "google-btn"} id="sign-in-div"></div>
+                <div className={loggedIn ? "google-btn hidden" : "google-btn"} id="sign-in-div">
+                    {google.accounts.id.renderButton(document.getElementById(`sign-in-div`),{shape: 'pill'})}
+                </div>
                 <button className={loggedIn ? "logout-btn" : "logout-btn hidden"} onClick={handleLogout}>Logout</button>
             </nav>
         </>
