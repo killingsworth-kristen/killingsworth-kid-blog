@@ -15,7 +15,7 @@ export default function Navbar ({setAdmin, loggedIn, setLoggedIn, setToken, setU
         setUser(UserObj);
         setToken(response.credential);
         setLoggedIn(true)
-        if (UserObj.email === "kristenk2017@gmail.com" || "katiekillingsworth522@gmail.com") {
+        if (UserObj.email === "kristenk2017@gmail.com" || UserObj.email === "katiekillingsworth522@gmail.com") {
             setAdmin(true)
             localStorage.setItem("admin", true)
             console.log(`catching in navbar 23`)
