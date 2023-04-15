@@ -128,9 +128,13 @@ export default function BlogCard ({admin, postObj, loggedIn, user, postMode, set
         localStorage.setItem('edit',e.target.parentNode.classList)
     }
 
-    const handleDeletePost = () => {
+    const handleDeletePost = async () => {
+        try {
         API.deletePost(postObj.id)
         window.location.reload()
+        } catch (err) { 
+            console.log(err)
+        }
     }
 
     return (

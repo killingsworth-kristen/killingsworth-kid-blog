@@ -16,7 +16,7 @@ export default function Home () {
                     <img src='./../assets/img/Katie-Sonogram.png' alt='sonogram' id='sonogram' className='home-images'/>
                 </div>
                 <div className='home-registries'>
-                    <h3>Registries coming soon!</h3>
+                    <a className='registry-link'href='https://www.amazon.com/baby-reg/katie-killingsworth-september-2023-mountvernon/1CVVULI4M5TUA' target="_blank">Click Here for Registry</a>
                 </div>
                 <footer>
                     <Footer />
