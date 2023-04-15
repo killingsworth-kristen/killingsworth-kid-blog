@@ -3,7 +3,7 @@
 }
 
 .edit-post-modal {
-    margin: 25vh 25vw;
+    margin: 0 15vw;
 }
 
 .blog-content-edit {
@@ -12,7 +12,6 @@
     display: flex;
     position: fixed;
     width: fit-content;
-    height: fit-content;
     border: 2px solid gray;
     border-radius: 20px;
     overflow: hidden;

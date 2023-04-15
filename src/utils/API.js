@@ -1,9 +1,9 @@
 // in dev mode
-// const URL_PREFIX = "http://192.168.0.15:3001"
+// const URL_PREFIX = "http://localhost:3001"
+
 // in prod mode
-// const URL_PREFIX= "https://killingsworth-kid-backend.herokuapp.com"
 const URL_PREFIX= "https://killingsworth-kid-backend-2egfgsl7ea-uc.a.run.app"
-// const URL_PREFIX = 'http://localhost:3001'
+
 const API = {
     // token call
     postToken: (token) => {
@@ -35,6 +35,8 @@ const API = {
         return fetch(`${URL_PREFIX}/likes`, {
             method: "POST",
             body: JSON.stringify(likeObj),
+            mode: 'cors',
+            keepalive: true,
             headers: {
                 "Content-Type": "application/json"
             }
@@ -45,6 +47,8 @@ const API = {
         // delete like
         return fetch(`${URL_PREFIX}/likes/${likeId}`, {
             method: "DELETE",
+            mode: 'cors',
+            keepalive: true,
             headers: {
                 "Content-Type": "application/json"
             },
@@ -71,22 +75,27 @@ const API = {
             }
         }).then(res => res.json())
     },
+
     newPost: (postObj) => {
         // post/create new post
-        console.log(postObj)
-        return fetch(`${URL_PREFIX}/posts`, {
+        return fetch(`${URL_PREFIX}/posts/`, {
             method: "POST",
+            mode: "cors",
+            keepalive: true,
             body: JSON.stringify(postObj),
             headers: {
                 "Content-Type": "application/json"
             },
         }).then(res => res.json())
     },
+
     updatePost: (editPostObj, currentPost) => {
         // put/update post
         return fetch(`${URL_PREFIX}/posts/${currentPost}`, {
             method: "PUT",
             body: JSON.stringify(editPostObj),
+            mode: 'cors',
+            keepalive: true,
             headers: {
                 "Content-Type": "application/json",
             }
@@ -97,8 +106,11 @@ const API = {
 
         
         // delete post
+        console.log(currentPost)
         return fetch(`${URL_PREFIX}/posts/${currentPost}`, {
             method: "DELETE",
+            mode: 'cors',
+            keepalive: true,
             headers: {
                 "Content-Type": "application/json",
             }
@@ -111,6 +123,8 @@ const API = {
         return fetch(`${URL_PREFIX}/comments`, {
             method: "POST",
             body: JSON.stringify(commentObj),
+            mode: 'cors',
+            keepalive: true,
             headers: {
                 "Content-Type": "application/json",
             }
@@ -122,6 +136,8 @@ const API = {
         return fetch(`${URL_PREFIX}/comments/${commentId}`, {
             method: "PUT",
             body: JSON.stringify(editCommentObj),
+            mode: 'cors',
+            keepalive: true,
             headers: {
                 "Content-Type": "application/json",
             }
@@ -132,6 +148,8 @@ const API = {
         // delete comment
         return fetch(`${URL_PREFIX}/comments/${currentComment}`, {
             method: "DELETE",
+            mode: 'cors',
+            keepalive: true,
             headers: {
                 "Content-Type": "application/json",
             }

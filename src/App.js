@@ -43,7 +43,7 @@ function App() {
       setUser({})
       setToken("")
       return;
-    } else if (storedUser.email === "kristenk2017@gmail.com" || "katiekillingsworth522@gmail.com") {
+    } else if (storedUser.email === "kristenk2017@gmail.com" || storedUser.email === "katiekillingsworth522@gmail.com") {
       setUser(storedUser)
       localStorage.setItem("admin", true)
       setAdmin(true)

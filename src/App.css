@@ -1,16 +1,13 @@
-* {
+*:not(.google-btn) {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* background: none; */
-  background-color: rgb(208, 240, 192);
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: black;
 }
 
+body {
+  background-color: rgb(208, 240, 192);
+}
 
-/* footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-} */
 

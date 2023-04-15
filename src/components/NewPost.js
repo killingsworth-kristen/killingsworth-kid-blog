@@ -25,16 +25,23 @@ export default function NewPost ({openModal, setOpenModal}) {
 
     }
 
-    const handleNewPostSubmit = async (e) => {
+    const handleNewPostSubmit = () => {
         const currentUser = JSON.parse(localStorage.user).sub
         console.log(currentUser)
-        let postObj = {
+        const postObj = {
             title: postTitle,
             body: postBody,
             image: postImg,
             UsersId: currentUser
         }
-        await API.newPost(postObj)
+        console.log(postObj)
+        API.newPost(postObj).then((res)=>{
+            console.log(res)
+        }).catch((err)=>{
+            console.error(err)
+            console.log(err.message)
+            console.log(err.cause)
+        })
         setOpenModal(false);
         setPostTitle("");
         setPostBody("");
